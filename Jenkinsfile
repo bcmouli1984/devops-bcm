@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Hello') {
             steps {
-                echo 'Hello World'
+                git branch: 'dev', credentialsId: 'github-cred', url: 'git@github.com:bcmouli1984/devops-bcm.git'
             }
         }
         stage('demo') {
