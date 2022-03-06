@@ -2,19 +2,19 @@ pipeline {
     agent any
 
     stages {
-        stage('create a file') {
+        stage('Hello') {
             steps {
-                touch test
+                echo 'Hello World'
             }
         }
-        stage('copied') {
+        stage('demo') {
             steps {
-                cp -rf prod test
+                echo 'Hello World'
             }
         }
-        stage('cat ') {
+        stage('abc') {
             steps {
-                cat test
+                echo 'Hello World'
             }
         }
     }
