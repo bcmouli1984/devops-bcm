@@ -1,21 +1,35 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Hello') {
+       stages {
+        stage('create a file') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/dev']], extensions: [], userRemoteConfigs: [[url: 'git@github.com:bcmouli1984/devops-bcm.git']]])
+                touch test
             }
         }
-        stage('demo') {
+        stage('copy prod to test') {
             steps {
-                cleanWs cleanWhenAborted: false, cleanWhenFailure: false, cleanWhenNotBuilt: false, cleanWhenUnstable: false
+                cp -rf prod test
             }
         }
-        stage('abc') {
+        stage('copied') {
             steps {
-                echo 'Hello World'
+                echo 'file created and copied'
+            }
+        }
+		stage('cat') {
+            steps {
+                cat test
+            }
+        }
+		stage('up time') {
+            steps {
+                uptime
+            }
+        }
+		stage('uname') {
+            steps {
+                uname -a
             }
         }
     }
-}
