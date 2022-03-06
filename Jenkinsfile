@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Hello') {
             steps {
-                git branch: 'dev', credentialsId: 'github-cred', url: 'git@github.com:bcmouli1984/devops-bcm.git'
+                checkout([$class: 'GitSCM', branches: [[name: '*/dev']], extensions: [], userRemoteConfigs: [[url: 'git@github.com:bcmouli1984/devops-bcm.git']]])
             }
         }
         stage('demo') {
