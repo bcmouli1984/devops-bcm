@@ -9,7 +9,7 @@ pipeline {
         }
         stage('demo') {
             steps {
-                echo 'Hello World'
+                cleanWs cleanWhenAborted: false, cleanWhenFailure: false, cleanWhenNotBuilt: false, cleanWhenUnstable: false
             }
         }
         stage('abc') {
