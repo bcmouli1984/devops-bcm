@@ -1,35 +1,21 @@
 pipeline {
     agent any
 
-       stages {
+    stages {
         stage('create a file') {
             steps {
                 touch test
             }
         }
-        stage('copy prod to test') {
+        stage('copied') {
             steps {
                 cp -rf prod test
             }
         }
-        stage('copied') {
-            steps {
-                echo 'file created and copied'
-            }
-        }
-		stage('cat') {
+        stage('cat ') {
             steps {
                 cat test
             }
         }
-		stage('up time') {
-            steps {
-                uptime
-            }
-        }
-		stage('uname') {
-            steps {
-                uname -a
-            }
-        }
     }
+}
